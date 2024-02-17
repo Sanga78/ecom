@@ -1,4 +1,19 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
-<h3>store</h3>
+<div class="row">
+    {% for product in products %}
+    <div class="col-log-4">
+        <img class="thumbnail" src="">
+        <div class="box-element product">
+            <h6><strong>{{product.name}}</strong></h6>
+            <hr>
+
+            <button class="btn btn-outline-secondary add-btn">Add to cart</button>
+            <a href="#" class="btn btn-outline-success">View</a>
+            <h4 style="display: inline-block; float: right"><strong>
+                ${{product.price|floatformat:2}}</strong></h4>
+        </div>
+    </div>
+    {% endfor %}
+</div>
