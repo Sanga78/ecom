@@ -1,1 +1,21 @@
-<h3>checkout</h3>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="box-element">
+            <a class="btn btn-outline-dark" href="{% url 'cart'}">&#x2190; Back to cart</a>
+            <hr>
+            <h3>Order Summary</h3>
+            <hr>
+            {% for item in items %}
+            <div class="cart-row">
+                <div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}"></div>
+                <div style="flex:2"><p>{{item.product.name}}</p></div>
+                <div style="flex:1"><p>{{item.product.price}}</p></div>
+                <div style="flex:1"><p>{{item.quantity}}</p></div>
+            </div>
+            {% endfor %}
+            <h5>Items: {{order.get_cart_items}}</h5>
+            <h5>Total: ${{order.get_cart_total|floatformat:2}}</h5>
+        </div>      
+
+    </div>
+</div>
