@@ -1,11 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunfresh</title>
-</head>
-<body>
-    welcone to sunfresh
-</body>
-</html>
+{% extends "./base.html" %}
+{% block content %}
+ <!-- home section starts here -->
+ <section class="home" id="home">
+    <div class="content">
+        <h3>fresh <span>juices</span><span> and </span>drinks</h3>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio id dolores porro dicta facere nisi facilis, iste voluptates dolor blanditiis harum! Itaque, accusantium consectetur sed dolores velit, molestiae omnis delectus unde quasi cupiditate
+            eaque at?</p>
+        <a href="#" class="btn">Order now</a>
+    </div>
+</section>
+<!-- home section ends here -->
+
+<!-- about section starts here -->
+<section class="about" id="about">
+
+    <h1 class="heading"><span>about</span> us </h1>
+
+    <div class="row">
+
+        <div class="image">
+            <img src="" alt="">
+        </div>
+
+        <div class="content">
+            <h3>What makes us special</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt recusandae dignissimos minima placeat commodi, quidem asperiores? Odio reprehenderit itaque aliquid, in neque eos expedita nihil, explicabo, veniam dolor fugiat dicta!</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt repudiandae omnis facere vitae molestias minima id, debitis sit soluta a.</p>
+            <a href="" class="btn">learn more</a>
+        </div>
+
+    </div>
+
+</section>
+<!-- about section starts here -->
+{% endblock content %}
