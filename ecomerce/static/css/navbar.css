@@ -1,0 +1,130 @@
+/* navbar styling*/
+.navbar img{
+    width: 50px;
+    height: 50px;
+    margin-left: 22px;
+}
+.navbar{
+    background-color: rgba(0, 2, 5, 0.982);
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+}
+.navbar ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.navbar ul a{
+    color: white;
+    display: block;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: .5s;
+	text-decoration: none;
+}
+.navbar ul a:hover{
+    color:lightgreen;
+    transition: .5s;
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.navbar .menu{
+    clear: both;
+    max-height: 0;
+    transition: max-height ,2s ease-out;
+}
+.navbar .menu-icon{
+    padding: 28px 20px;
+    position: relative;
+    float: right;
+    cursor: pointer;
+}
+.navbar .menu-icon .nav-icon{
+    background: white;
+    display: block;
+    height: 2px;
+    width: 18px;
+    position: relative;
+    transition: background .2s ease-out;
+}
+.navbar .menu-icon .nav-icon:before{
+    background: white;
+    content: "";
+    display: block;
+     height: 100%;
+     width: 100%;
+     position: absolute;
+     transition: all .2s ease-out;
+     top: 5px;
+}
+.navbar .menu-icon .nav-icon:after{
+    background: white;
+    content: "";
+    display: block;
+     height: 100%;
+     width: 100%;
+     position: absolute;
+     transition: all .2s ease-out;
+     top: -5px;
+}
+.navbar .menu-btn{
+    display: none;
+}
+.navbar .menu-btn:checked ~ .menu{
+    max-height: 400px;
+}
+.navbar .menu-btn:checked ~ .menu-icon .nav-icon{
+    background: transparent;
+}
+.navbar .menu-btn:checked ~ .menu-icon .nav-icon:before{
+    transform: rotate(-45deg);
+    top: 0;
+}
+.navbar .menu-btn:checked ~ .menu-icon .nav-icon:after{
+    transform: rotate(45deg);
+    top: 0;
+}
+@media (min-width:40em){
+    .navbar li{
+        float:left;
+    }
+    .navbar li a{
+        padding: 20px 30px;
+    }
+    .navbar .menu{
+        clear: none;
+        float: right;
+        max-height: none;
+    }
+    .navbar .menu-icon{
+        display: none;
+    }
+}
+
+nav ul li img.icon{
+    height: 15px;
+    width: 20px;
+}
+
+/* footer section styling */
+footer{
+    background: rgb(144, 165, 168);
+    padding: 10px 20px;
+    color: rgba(255, 255, 255, 0.678);
+    text-align: center;
+    position: bottom;
+}
+footer p{
+    font-size: 1em;
+    text-align: center;
+    color: rgba(58, 56, 56, 0.671);
+}
