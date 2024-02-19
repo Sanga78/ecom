@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunfresh</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+</head>
+<body>
+     
+      <!-- nav/menu -->
+	    <nav class="navbar">
+            <a href="#" class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="Sunfresh Logo">
+            </a>
+            <!-- <img class="logo" id="logo" src="{% static 'images/logo.png' %}" alt="Sunfresh Logo"> -->
+            <input class="menu-btn" type="checkbox" id="menu-btn" />
+            <label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
+            <!-- Menu-->
+            <ul class="menu">
+                <li><a href="">Home</a></li>
+                <li><a href="">About us</a></li>
+                <li><a href="">Contact</a></li>
+                {% if user.is_authenticated %}
+            <li><a href="logout">Logout</a></li>
+            {% else %}
+            <li><a class="nav-item nav-link" href="{%url 'login'%}">Login</a></li>
+            <li><a class="nav-item nav-link" href="{%url 'register'%}">Register</a></li>
+            {% endif %}
+            </ul>
+        </nav>
+	    <!-- end of nav/menu -->
+    
+    
+<!-- header section ends here -->
+
+    {% block content %}{% endblock %}
+    <!-- footer section starts here -->
+
+    <section class="footer ">
+        <div class="share ">
+            <a href="https://web.facebook.com/kelvin.sanga.7334?_rdc=1&_rdr " class="fab fa-facebook-f " aria-hidden="true "></a>
+            <a href="https://twitter.com/home " class="fab fa-twitter " aria-hidden="true "></a>
+            <a href="https://www.instagram.com/ " class="fab fa-instagram " aria-hidden="true "></a>
+            <a href="https://ke.linkedin.com/ " class="fab fa-linkedin " aria-hidden="true "></a>
+            <a href="https://github.com/Sanga78 " class="fab fa-github " aria-hidden="true "></a>
+        </div>
+
+        <div class="links ">
+            <a href="# ">home</a>
+            <a href="# ">about</a>
+            <a href="# ">menu</a>
+            <a href="#products ">products</a>
+            <a href="# ">review</a>
+            <a href="# ">contact</a>
+            <a href="# ">blogs</a>
+        </div>
+        <div class="credit ">created by <span>mr. kelvin kipkosgei</span> | all rights reserved</div>
+    </section>
+    <!-- footer section ends here -->
+
+</body>
+</html>
