@@ -13,21 +13,25 @@
     <div class="login-page">
         <center><h2>Register with us</h2></center>
         <div class="form">
-          <form>
-            <input type="text" required minlength="10" name="username" placeholder="Full name" />
-            <input type="email" required name="email" placeholder="email address" />
-            <input type="password" id="password" name="password1" id="password" placeholder="set a password" />
-            <input type="password" name="password2" id="cpassword" placeholder="confirm password" />
+          <form method="post" autocomplete="off">
+            {% csrf_token %}
+            {% if messages %}
+                {% for message in messages %}
+                    <h2 class="error">{{message}}</h2>
+                {% endfor %}
+            {% endif %}
+            <input type="text" id="username" name="username" type="text" placeholder="Username" required>
+            <input type="email" id="email" name="email" type="email" placeholder="Email" required>
+            <input type="password" id="password1" name="password1" type="password" placeholder="Password" required>
+            <input type="password" id="password2" name="password2" type="password" placeholder="Confirm Password" required>
             <i class="fas fa-eye" onclick="show()"></i>
             <br>
             <br>
-          </form>
-
-          <form class="login-form">
-            <button type="button" id="btn-signup">
+            <button type="submit" id="btn-signup">
               SIGN UP
             </button>
-          </form>
+            <center><a id="return_btn" href="{% url 'login' %}">Already have an account</a></center>
+          </form>          
         </div>
     </div>
 </body>
