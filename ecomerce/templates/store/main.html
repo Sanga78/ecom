@@ -1,36 +1,56 @@
-{% extends "./base.html" %}
-{% block content %}
- <!-- home section starts here -->
- <section class="home" id="home">
-    <div class="content">
-        <h3>fresh <span>juices</span><span> and </span>drinks</h3>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio id dolores porro dicta facere nisi facilis, iste voluptates dolor blanditiis harum! Itaque, accusantium consectetur sed dolores velit, molestiae omnis delectus unde quasi cupiditate
-            eaque at?</p>
-        <a href="#" class="btn">Order now</a>
-    </div>
-</section>
-<!-- home section ends here -->
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Ecom</title>
 
-<!-- about section starts here -->
-<section class="about" id="about">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
 
-    <h1 class="heading"><span>about</span> us </h1>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <div class="row">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
-        <div class="image">
-            <img src="" alt="">
-        </div>
+</head>
+<body>
 
-        <div class="content">
-            <h3>What makes us special</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt recusandae dignissimos minima placeat commodi, quidem asperiores? Odio reprehenderit itaque aliquid, in neque eos expedita nihil, explicabo, veniam dolor fugiat dicta!</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt repudiandae omnis facere vitae molestias minima id, debitis sit soluta a.</p>
-            <a href="" class="btn">learn more</a>
-        </div>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="{% url 'store' %}">Ecom</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
 
-    </div>
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>
+	      </li>
+	 
+	    </ul>
+	    <div class="form-inline my-2 my-lg-0">
+	     	<a href="#"class="btn btn-warning">Login</a>
+	     	
+	     	<a href="{% url 'cart' %}">
+	    		<img  id="cart-icon" src="{% static 'images/cart.png' %}">
+	    	</a>
+	    	<p id="cart-total">0</p>
 
-</section>
-<!-- about section starts here -->
-{% endblock content %}
+	    </div>
+	  </div>
+	</nav>
+
+     <div class="container">
+            <br>
+            {% block content %}
+
+
+            {% endblock content %}
+         </div>
+
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
