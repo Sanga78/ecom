@@ -1,0 +1,50 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="login-page">
+      <h2>Log in</h2>
+        <br>
+        <div class="form">
+    
+        <form class="login-form" method="post" role="form" id="signup-form" autocomplete="off">
+          <div id="errorDiv"></div>
+            <input type="email" required name ="email" placeholder="&#xf007;  Email Address"/>
+            <input type="password" name="password" id="password" placeholder="&#xf023;  password"/>
+            <i class="fas fa-eye" onclick="show()"></i> 
+            <br>
+            <br>
+            <button type="submit" id="btn-signup">LOGIN</button>
+            <p class="message">
+              <a href="#">.</a><br>
+            </p>
+        </form>
+    
+        <form class="login-form">
+            <button type="button" onclick="window.location.href='register'">SIGN UP</button>
+        </form>
+        </div>
+  </div>
+  
+    <script>
+      function show(){
+        var password = document.getElementById("password");
+        var icon = document.querySelector(".fas")
+  
+        // ========== Checking type of password ===========
+        if(password.type === "password"){
+          password.type = "text";
+        }
+        else {
+          password.type = "password";
+        }
+      };
+    </script>
+</body>
+</html>
+{% endblock content %}
