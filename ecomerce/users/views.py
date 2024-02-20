@@ -16,7 +16,7 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request,f"Logged in Successfully as {username}")
-                return redirect('personal_expenditure')
+                return redirect('store')
             else:
                 messages.info(request,"Account doesn't exists")
                 return redirect('register')
@@ -36,17 +36,17 @@ def register(request):
         if password == password2:
             if User.objects.filter(email=email).exists():
                 messages.info(request,'Email Already Exists')
-                return redirect('user_register')
+                return redirect('register')
             elif User.objects.filter(username=username).exists():
                 messages.info(request,'Username Already Exists')
-                return redirect('user_register')
+                return redirect('register')
             else:
                 user = User.objects.create_user(username=username,email=email,password=password)
                 user.save()
                 return redirect('login')
         else:
             messages.info(request,'Password Not The Same')
-            return redirect('user_register')
+            return redirect('register')
     else:
         return render(request,'registration/register.html')
 
