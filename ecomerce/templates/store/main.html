@@ -27,8 +27,11 @@
 	 
 	    </ul>
 	    <div class="form-inline my-2 my-lg-0">
-	     	<a href="{% url 'login' %}"class="btn btn-warning">Login</a>
-	     	
+			{% if user.is_authenticated %}
+	     	<a href="{% url 'logout' %}"class="btn btn-warning">Logout</a>
+			{% else %}
+			<a href="{% url 'login' %}"class="btn btn-warning">Login</a>
+			{% endif %}
 	     	<a href="{% url 'cart' %}">
 	    		<img  id="cart-icon" src="{% static 'images/cart.png' %}">
 	    	</a>
@@ -52,5 +55,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+	<script src="{% static 'js/cart.js' %}"></script>
 </body>
 </html>
