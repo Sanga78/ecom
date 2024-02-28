@@ -11,7 +11,7 @@ def store(request):
         cartItems = order.get_cart_items
     else:
         items = []
-        order = {'get_cart_total':0, 'get_cart_items':0}
+        order = {'get_cart_total':0, 'get_cart_items':0,'shipping':False}
         cartItems = order['get_cart_items']
 
     products = Product.objects.all()
@@ -24,10 +24,11 @@ def cart(request):
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer,complete=False)
         items = order.orderitem_set.all()
-        cartItems = order['get_cart_items']
+        cartItems = order.get_cart_items
     else:
         items = []
-        order={'get_cart_total':0,'get_cart_items':0}
+        order={'get_cart_total':0,'get_cart_items':0,'shipping':False}
+        cartItems = order['get_cart_items']
 
     context= {'items':items, 'order':order,'cartItems':cartItems}
     return render(request,'store/cart.html',context)
@@ -38,12 +39,13 @@ def checkout(request):
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer,complete=False)
         items = order.orderitem_set.all()
-        cartItems = order['get_cart_items']
+        cartItems = order.get_cart_items
     else:
         items = []
         order={'get_cart_total':0,'get_cart_items':0}
+        cartItems = order['get_cart_items']
 
-    context= {'items':items, 'order':order,'cartItems':cartItems}
+    context= {'items':items, 'order':order,'cartItems':cartItems,'shipping':False}
     return render(request,'store/checkout.html',context)
 
 def updateItem(request):
@@ -63,7 +65,7 @@ def updateItem(request):
     if action == 'add':
         orderItem.quantity = (orderItem.quantity + 1)
     elif action == 'remove':
-        orderItem.quantity = (orderItem - 1)
+        orderItem.quantity = (orderItem.quantity - 1)
 
     orderItem.save()
 
@@ -71,3 +73,6 @@ def updateItem(request):
         orderItem.delete()
 
     return JsonResponse('Item was added', safe=False)
+
+def processOrder(request):
+    return JsonResponse("Payment complete",safe=False)
