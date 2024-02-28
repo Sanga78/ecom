@@ -70,7 +70,7 @@
 	</div>
 	<script type="text/javascript">
 		var shipping = '{{order.shipping}}'
-		var total = '{{order.get_cart_total|floatformat:2}}'
+		var total = '{{order.get_cart_total}}'
 		if (shipping == 'False'){
 			document.getElementById('shipping-info').innerHTML = ''
 		}
@@ -132,7 +132,12 @@
 				},
 				body:JSON.stringify({'form':userFormData,'shipping':shippingInfo})
 			})
-			
+			.then((response) => response.json())
+			.then((data) => {
+				console.log('Success:', data);
+				alert('Transaction completed');
+				window.location.href = "{% url 'store' %}"
+			})			
 		}
 	</script>
 {% endblock content %}
