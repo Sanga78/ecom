@@ -4,32 +4,26 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> -->
 </head>
 <body>
     <div class="login-page">
-      <h2>Log in</h2>
+      <center><h2>Log in</h2></center>
         <br>
         <div class="form">
     
         <form method="post" class="login-form" id="signup-form" autocomplete="off">
           {% csrf_token %}
-          <div id="errorDiv">
                 {% if messages %}
                     {% for message in messages %}
                         <h2 class="error">{{message}}</h2>
                     {% endfor %}
                 {% endif %}
-          </div>
             <input type="text" required name ="username" placeholder="Username"/>
             <input type="password" name="password" id="password" placeholder="Password"/>
             <i class="fas fa-eye" onclick="show()"></i> 
             <br>
             <br>
             <button type="submit" id="btn-signup">LOGIN</button>
-            <p class="message">
-              <a href="#">.</a><br>
-            </p>
         </form>
     
         <form class="login-form">
@@ -37,21 +31,6 @@
         </form>
         </div>
   </div>
-  
-    <script>
-      function show(){
-        var password = document.getElementById("password");
-        var icon = document.querySelector(".fas")
-  
-        // ========== Checking type of password ===========
-        if(password.type === "password"){
-          password.type = "text";
-        }
-        else {
-          password.type = "password";
-        }
-      };
-    </script>
 </body>
 </html>
 {% endblock content %}
