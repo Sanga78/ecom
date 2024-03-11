@@ -130,3 +130,20 @@ MEDIA_ROOT = 'media'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MPESA_ENVIRONMENT = 'sandbox'
+
+MPESA_CONSUMER_KEY =""
+MPESA_CONSUMER_SECRET = ""
+
+MPESA_SHORTCODE =""
+
+MPESA_EXPRESS_SHORTCODE = ""
+
+MPESA_SHORTCODE_TYPE ='paybill'
+
+MPESA_PASSKEY =""
+
+MPESA_INITIATOR_USERNAME =""
+
+MPESA_INITIATOR_SECRET_CREDENTIAL = ""
