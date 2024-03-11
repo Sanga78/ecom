@@ -1,10 +1,12 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 import json
 import datetime
 
+
 from .models import *
 from . utils import cookieCart,cartData,guestOrder
+from django_daraja.mpesa.core import MpesaClient
 # Create your views here.
 def store(request):
     data = cartData(request)
@@ -87,3 +89,19 @@ def processOrder(request):
         )
 
     return JsonResponse("Payment complete",safe=False)
+
+
+def index(request):
+    cl = MpesaClient()
+
+    phone_number = ""
+    amount = 1
+    account_reference = 'reference'
+    tranaction_desc = 'Description'
+    callback_url = 'https://darajambili.herokuapp.com/expess-payment';
+    response = cl.stk_push(phone_number, amount, account_reference, tranaction_desc, callback_url)
+    return HttpResponse(response)
+def stk_push_callback(request):
+    data = request.body
+
+    return HttpResponse("STK")
