@@ -50,7 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'store.middleware.DDoSMiddleware'
+    'store.middleware.DDoSMiddleware',
+    'store.middleware.BruteForceProtection'
 ]
 
 ROOT_URLCONF = 'ecomerce.urls'
@@ -154,3 +155,7 @@ EMAIL_HOST='smtp.gmail.com'
 EMAIL_HOST_USER=os.environ['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD=os.environ['EMAIL_HOST_PASSWORD']
 EMAIL_PORT=587
+
+LOGIN_URL = 'login'
+BRUTE_FORCE_THRESHOLD = 3 # Allow only 3 failed login attempts
+BRUTE_FORCE_TIMEOUT = 300 # Lock the user out for 5 minutes (300 seconds)
