@@ -15,7 +15,9 @@
           {% csrf_token %}
                 {% if messages %}
                     {% for message in messages %}
-                        <h2 class="error">{{message}}</h2>
+                    <script>
+                        alert("{{message}}")
+                    </script>
                     {% endfor %}
                 {% endif %}
             <input type="text" required name ="username" placeholder="Username"/>
