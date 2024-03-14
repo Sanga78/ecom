@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from django.urls import reverse_lazy
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -50,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'store.middleware.DDoSMiddleware',
+    # 'store.middleware.DDoSMiddleware',
     'store.middleware.BruteForceProtection'
 ]
 
@@ -156,6 +157,6 @@ EMAIL_HOST_USER=os.environ['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD=os.environ['EMAIL_HOST_PASSWORD']
 EMAIL_PORT=587
 
-LOGIN_URL = 'login'
+LOGIN_URL = reverse_lazy('login')
 BRUTE_FORCE_THRESHOLD = 3 # Allow only 3 failed login attempts
 BRUTE_FORCE_TIMEOUT = 300 # Lock the user out for 5 minutes (300 seconds)
