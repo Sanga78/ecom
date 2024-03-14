@@ -1,7 +1,7 @@
 from typing import Any
 from django.http import HttpResponseForbidden
 from django.core.cache import cache
-from ecomerce.ecomerce import settings
+from django.conf import settings
 
 class DDoSMiddleware:
     def __init__(self, get_response):
