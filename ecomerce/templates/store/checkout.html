@@ -135,11 +135,10 @@
 			.then((response) => response.json())
 			.then((data) => {
 				console.log('Success:', data);
-				alert('Transaction completed');
-				
+				alert('Proceed to pay');
 				cart = {}
 				document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
-				window.location.href = "{% url 'store' %}"
+                window.location.href = '{% url 'stk:stk' %}';
 			})			
 		}
 	</script>
