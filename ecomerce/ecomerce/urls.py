@@ -25,8 +25,9 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('store.urls')),
+    path("stk/", include("payment.urls")),
     path('register', user_views.register, name='register'),
-    path('login/',user_views.login_request,name='login'),
+    path('login',user_views.login_request,name='login'),
     path('logout/',user_views.logout_request,name='logout'),
     path('password-reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
