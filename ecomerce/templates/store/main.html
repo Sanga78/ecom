@@ -61,7 +61,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="{% url 'store' %}">Ecom</a>
+	  <a class="navbar-brand" href="{% url 'store' %}">EcoMart</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -83,7 +83,32 @@
 	    		<img  id="cart-icon" src="{% static 'images/cart.png' %}">
 	    	</a>
 	    	<p id="cart-total">{{cartItems}}</p>
+			<div class="search-form">
+				<input type="search" id="search-box" placeholder="search here...">
+				<label for="search-box" class="fas fa-search"></label>
+			</div>
+			<div class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
+				<div class="dropdown-menu m-0">
 
+					<li class="nav-item ">
+						<a href="" class="nav-item nav-link active dropdown-item">Cereals</a>
+					</li>
+
+					<li class="nav-item">
+						<a href="" class="nav-item nav-link active dropdown-item">Fruits</a>
+					</li>
+
+					<li class="nav-item">
+						<a href="" class="nav-item nav-link active dropdown-item">Tubers</a>
+					</li>
+
+					<li class="nav-item">
+						<a href="" class="nav-item nav-link active dropdown-item">Vegetables</a>
+					</li>
+
+				</div>
+			</div>
 	    </div>
 	  </div>
 	</nav>
