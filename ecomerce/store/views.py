@@ -89,3 +89,13 @@ def processOrder(request):
         )
 
     return JsonResponse("Payment complete",safe=False)
+
+def search(request):
+    if request.method == 'GET':
+        query = request.GET.get('query')
+
+        if query:
+            prod = Product.objects.filter(name__icontains=query)
+            feat = Features.objects.filter(title__icontains=query)
+            return render(request, "search.html", {'prod':prod, 'feat':feat, 'article':article})
+
