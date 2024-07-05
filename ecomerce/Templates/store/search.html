@@ -1,0 +1,57 @@
+{% extends 'main.html' %}
+
+{% block body %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <br><br>
+
+            <h2 class="p-3">Search Results</h2>
+
+            {% if prod %}
+
+                <div class="row g-4">
+                {% for p in prod %}
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp " data-wow-delay="0.3s" >
+
+                        <a href="{% url 'Store:viewdetails' p.id %}">
+                            <div class="card">
+                        <img src="http://127.0.0.1:8000/media/{{ p.image }}" class="card-img-top " alt="{{ p.name }} " >
+                        <div class="card-body">
+                            <h5 class="card-text"> {{ p.description }}</h5>
+                            <p class="card-text"> {{ p.Price }}</p>
+
+
+                        </div>
+                    </div>
+
+                        </a>
+
+                    </div>
+
+                {% endfor %}
+            </div>
+                </div>
+                </div>
+
+
+             {% else %}
+
+               <h3 class="text-danger">No record matching your query was found</h3>
+
+            {% endif %}
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

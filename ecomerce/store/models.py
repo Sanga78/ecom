@@ -9,9 +9,23 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.name
-    
+
+class Category(models.Model):
+    name = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200,unique=True)
+    class Meta:
+        ordering = ['name']
+        indexes = [
+        models.Index(fields=['name']),
+        ]
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
+    def __str__(self):
+        return self.name
+ 
 class Product(models.Model):
     name = models.CharField(max_length=200,null=True)
+    category = models.ForeignKey(Category,related_name='products',on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=7, decimal_places=2)
     digital = models.BooleanField(default=False,null=True, blank=False)
     image = models.ImageField(null=True,blank=True)

@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import JsonResponse, HttpResponse
 import json
 import datetime
-
+from django.contrib import messages
 
 from .models import *
 from . utils import cookieCart,cartData,guestOrder
@@ -16,6 +16,17 @@ def store(request):
     context= {'products':products,'cartItems': cartItems}
     return render(request,'store/store.html',context)
    
+def category(request, name):
+    # Grab the category from the url
+    try:
+        category = Category.objects.get(name=name)
+        cat_products = Product.objects.filter(category=category)
+        return  render(request, "category.html", {'cat_products':cat_products, 'category':category})
+
+    except:
+        messages.warning(request, "That category doesn't exist")
+        return  redirect('Store:home')
+
 
 def cart(request):
     data = cartData(request)
@@ -96,6 +107,5 @@ def search(request):
 
         if query:
             prod = Product.objects.filter(name__icontains=query)
-            feat = Features.objects.filter(title__icontains=query)
-            return render(request, "search.html", {'prod':prod, 'feat':feat, 'article':article})
+            return render(request, "search.html", {'prod':prod})
 
