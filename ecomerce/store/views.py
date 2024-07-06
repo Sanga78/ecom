@@ -20,12 +20,12 @@ def category(request, name):
     # Grab the category from the url
     try:
         category = Category.objects.get(name=name)
-        cat_products = Product.objects.filter(category=category)
-        return  render(request, "category.html", {'cat_products':cat_products, 'category':category})
+        products = Product.objects.filter(category=category)
+        return  render(request, "category.html", {'products':products, 'category':category})
 
     except:
         messages.warning(request, "That category doesn't exist")
-        return  redirect('Store:home')
+        return  redirect('store')
 
 
 def cart(request):
@@ -107,5 +107,5 @@ def search(request):
 
         if query:
             prod = Product.objects.filter(name__icontains=query)
-            return render(request, "search.html", {'prod':prod})
+            return render(request, "store/search.html", {'prod':prod})
 

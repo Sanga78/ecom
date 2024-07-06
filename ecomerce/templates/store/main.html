@@ -84,9 +84,11 @@
 	    	</a>
 	    	<p id="cart-total">{{cartItems}}</p>
 			<div class="search-form">
-				<input type="search" id="search-box" placeholder="search here...">
-				<label for="search-box" class="fas fa-search"></label>
+				<form class="d-flex" role="search" method="get" action="{% url 'search' %}" >
+					<input class="form-control me-2" name="query" type="search" placeholder="Search hear..." aria-label="Search">
+				</form>
 			</div>
+			
 			<div class="nav-item dropdown">
 				<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
 				<div class="dropdown-menu m-0">
