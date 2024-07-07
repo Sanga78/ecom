@@ -23,11 +23,13 @@ def store(request):
    
 
 def category(request, name):
+    data = cartData(request)
+    cartItems = data['cartItems']
     # Grab the category from the url
     try:
         category = Category.objects.get(name=name)
         cat_products = Product.objects.filter(category=category)
-        return  render(request, "category.html", {'cat_products':cat_products, 'category':category})
+        return  render(request, "store/category.html", {'cat_products':cat_products, 'category':category,'cartItems':cartItems})
 
     except:
         messages.warning(request, "That category doesn't exist")
@@ -107,10 +109,12 @@ def processOrder(request):
     return JsonResponse("Payment complete",safe=False)
 
 def search(request):
+    data = cartData(request)
+    cartItems = data['cartItems']
     if request.method == 'GET':
         query = request.GET.get('query')
 
         if query:
             prod = Product.objects.filter(name__icontains=query)
-            return render(request, "store/search.html", {'prod':prod})
+            return render(request, "store/search.html", {'prod':prod,'cartItems':cartItems})
 
