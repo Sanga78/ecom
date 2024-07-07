@@ -13,20 +13,25 @@ def store(request):
     cartItems = data['cartItems']
 
     products = Product.objects.all()
-    context= {'products':products,'cartItems': cartItems}
+    category = Category.objects.all()
+
+    for cat in category:
+        cat_products = Product.objects.filter(category=cat)
+        
+    context= {'products':products,'cartItems': cartItems,'cat_products':cat_products, 'categories':category}
     return render(request,'store/store.html',context)
    
+
 def category(request, name):
     # Grab the category from the url
     try:
         category = Category.objects.get(name=name)
-        products = Product.objects.filter(category=category)
-        return  render(request, "category.html", {'products':products, 'category':category})
+        cat_products = Product.objects.filter(category=category)
+        return  render(request, "category.html", {'cat_products':cat_products, 'category':category})
 
     except:
         messages.warning(request, "That category doesn't exist")
         return  redirect('store')
-
 
 def cart(request):
     data = cartData(request)
