@@ -33,7 +33,7 @@ def category(request, name):
 
     except:
         messages.warning(request, "That category doesn't exist")
-        return  redirect('store')
+        return render(request,"store/category.html")
 
 def cart(request):
     data = cartData(request)
